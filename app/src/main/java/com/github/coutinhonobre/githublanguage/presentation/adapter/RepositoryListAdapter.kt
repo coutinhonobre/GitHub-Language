@@ -3,9 +3,12 @@ package com.github.coutinhonobre.githublanguage.presentation.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import coil.transform.CircleCropTransformation
 import com.github.coutinhonobre.githublanguage.domain.model.Item
 import com.github.coutinhonobre.githublanguage.R
 
@@ -30,6 +33,7 @@ internal class RepositoryListAdapter(
         private val nameUser: TextView = itemView.findViewById(R.id.nameUserTextView)
         private val forks: TextView = itemView.findViewById(R.id.forksTextView)
         private val repoRatingBar: RatingBar = itemView.findViewById(R.id.repoRatingBar)
+        private val imageView: ImageView = itemView.findViewById(R.id.imageView)
 
         fun bind(contact: Item) {
             with(contact) {
@@ -37,6 +41,11 @@ internal class RepositoryListAdapter(
                 nameUser.text = owner?.login
                 forks.text = forksCount.toString()
                 repoRatingBar.rating = stargazersCount.toFloat()
+                imageView.load(owner?.avatarUrl) {
+                    crossfade(true)
+                    placeholder(R.drawable.ic_launcher_background)
+                    transformations(CircleCropTransformation())
+                }
             }
         }
     }

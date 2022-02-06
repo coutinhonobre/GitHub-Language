@@ -6,14 +6,14 @@
     android:layout_height="wrap_content"
     android:clickable="true"
     android:elevation="3dp"
+    android:layout_margin="4dp"
     android:focusable="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/margin_large">
+        android:padding="@dimen/margin_mini">
 
-<!-- - Exibir *nome do repo, quantidade de estrelas, quantidade de fork, foto e *nome do autor-->
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="wrap_content"
@@ -63,8 +63,8 @@
             android:numStars="5"
             android:stepSize="0.1"
             app:layout_constraintStart_toEndOf="@+id/imageView"
-            app:layout_constraintTop_toBottomOf="@+id/forksTextView" />
-
+            app:layout_constraintTop_toBottomOf="@+id/forksTextView"
+            android:theme="@style/Widget.AppCompat.RatingBar.Indicator" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
